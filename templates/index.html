@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Cost Advisor</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<div class="container py-5">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold">
+            Cloud Cost Advisor
+        </h1>
+
+        <p class="lead text-muted">
+            Estimate AWS cloud costs using live pricing and receive optimization recommendations.
+        </p>
+    </div>
+
+    <!-- Main Card -->
+    <div class="card shadow-lg border-0">
+
+        <div class="card-header bg-dark text-white">
+            <i class="bi bi-cloud-fill"></i>
+            AWS Cost Estimator
+        </div>
+
+        <div class="card-body">
+
+            <form action="/calculate" method="POST">
+
+                <!-- AWS Service -->
+                <div class="mb-3">
+                    <label class="form-label">
+                        AWS Service
+                    </label>
+
+                    <select class="form-select" name="service" required>
+                        <option value="EC2" selected>Amazon EC2</option>
+                        <option value="S3" disabled>Amazon S3 (Coming Soon)</option>
+                        <option value="RDS" disabled>Amazon RDS (Coming Soon)</option>
+                    </select>
+                </div>
+
+                <!-- AWS Region -->
+                <div class="mb-3">
+                    <label class="form-label">
+                        AWS Region
+                    </label>
+
+                    <select class="form-select" name="region" required>
+
+                        {% for region in regions %}
+
+                        <option value="{{ region.code }}">
+                            {{ region.name }} ({{ region.code }})
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+                </div>
+
+                <!-- EC2 Instance -->
+                <div class="mb-3">
+                    <label class="form-label">
+                        EC2 Instance Type
+                    </label>
+
+                    <select class="form-select" name="instance" required>
+
+                        {% for instance in instances %}
+
+                        <option value="{{ instance.type }}">
+                            {{ instance.type }}
+                            ({{ instance.vcpu }} vCPU,
+                            {{ instance.memory }})
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+                </div>
+
+                <!-- Monthly Usage -->
+                <div class="mb-4">
+                    <label class="form-label">
+                        Monthly Usage Hours
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        name="hours"
+                        min="1"
+                        max="744"
+                        placeholder="e.g. 730"
+                        required>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-grid">
+                    <button type="submit" class="btn btn-warning btn-lg">
+                        <i class="bi bi-calculator"></i>
+                        Calculate Estimate
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

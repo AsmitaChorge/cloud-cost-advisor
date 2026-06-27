@@ -1,0 +1,38 @@
+body{
+    background:#f4f6f9;
+}
+
+.card{
+    border-radius:16px;
+}
+
+.card-header{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.btn-warning{
+    font-weight:600;
+}
+
+.display-5{
+    color:#232F3E;
+}
+
+.container{
+    width:700px;
+    margin:60px auto;
+    background:white;
+    padding:40px;
+    border-radius:10px;
+    box-shadow:0 0 15px rgba(0,0,0,0.15);
+}
+
+h1{
+    color:#232F3E;
+}
+
+p{
+    font-size:18px;
+    line-height:1.6;
+}

@@ -1,0 +1,22 @@
+[
+    {
+        "type": "t3.micro",
+        "vcpu": 2,
+        "memory": "1 GB"
+    },
+    {
+        "type": "t3.small",
+        "vcpu": 2,
+        "memory": "2 GB"
+    },
+    {
+        "type": "t3.medium",
+        "vcpu": 2,
+        "memory": "4 GB"
+    },
+    {
+        "type": "t3.large",
+        "vcpu": 2,
+        "memory": "8 GB"
+    }
+]
