@@ -96,6 +96,24 @@
                     </select>
                 </div>
 
+                <!-- Operating System -->
+                <div class="mb-3">
+                    <label class="form-label">
+                        Operating System
+                    </label>
+
+                    <select class="form-select" name="operating_system" required>
+
+                        {% for os in operating_systems %}
+
+                        <option value="{{ os.value}}">
+                            {{ os.name }}
+                        </option>
+
+                        {% endfor %}
+                    </select>
+                </div>
+
                 <!-- Monthly Usage -->
                 <div class="mb-4">
                     <label class="form-label">
